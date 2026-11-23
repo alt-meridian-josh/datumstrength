@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Datum Strength</title>
+<meta name="description" content="Every set logged, nothing typed. Datum Strength counts your reps, times each one, tracks bar speed and depth, and flags grinds.">
+<meta property="og:title" content="Datum Strength">
+<meta property="og:description" content="Every set logged, nothing typed. Datum Strength counts your reps, times each one, tracks bar speed and depth, and flags grinds.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://datumstrength.com/">
+<link rel="canonical" href="https://datumstrength.com/">
+<meta property="og:image" content="https://datumstrength.com/media/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="media/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+/* Datum Strength main page: leads with the app and what the lifter gets. Science lives on how.html. */
+:root {
+  color-scheme: dark;
+  --black: #0B0C0E;
+  --band: #121417;
+  --graphite: #16181B;
+  --steel: #2A2D32;
+  --rule: #4A4E55;
+  --bone: #F4F3EF;
+  --text-2: #C3C6CB;
+  --muted: #8B9098;
+  --signal: #2EAAF2;
+  --flag: #FF6A5C;
+  --display: 'Archivo', 'Arial Narrow', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+  --gut: max(16px, env(safe-area-inset-left, 0px));
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--black); color: var(--bone); }
+body { font: 400 16px/1.5 var(--display); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+.wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--gut); }
+.mono { font-family: var(--mono); letter-spacing: .08em; text-transform: uppercase; font-size: 12px; color: var(--muted); }
+
+/* Header */
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.lockup { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.lockup img { width: 30px; height: 30px; }
+.lockup span { font: 700 15px/1 var(--display); font-stretch: 112%; letter-spacing: .14em; }
+
+/* Hero: centered, one headline, one action, product straight below */
+.hero { padding: clamp(56px, 9vw, 120px) 0 0; text-align: center; }
+.hero .wrap { display: flex; flex-direction: column; align-items: center; gap: clamp(48px, 6vw, 72px); }
+.hero h1 { margin: 0 0 clamp(18px, 2.4vw, 26px); font: 800 clamp(48px, 9.4vw, 128px)/.92 var(--display); font-stretch: 84%; letter-spacing: -.02em; }
+.hero h1 span { display: block; color: var(--signal); }
+.hero .lede { margin: 0 auto clamp(28px, 3.5vw, 40px); max-width: 34ch; font-size: clamp(18px, 2.1vw, 23px); line-height: 1.4; color: var(--text-2); }
+.hero .waitlist { margin: 0 auto; justify-content: center; }
+.hero .waitlist .msg { text-align: center; }
+.hero .phone { margin-bottom: -1px; }
+
+/* Waitlist form */
+.waitlist { display: flex; flex-wrap: wrap; gap: 10px; max-width: 520px; }
+.waitlist input { flex: 1 1 220px; min-width: 0; height: 52px; padding: 0 16px; border: 1px solid var(--rule); border-radius: 4px; background: var(--graphite); color: var(--bone); font: 400 16px var(--display); }
+.waitlist input::placeholder { color: var(--muted); }
+.waitlist input:focus { outline: 2px solid var(--signal); outline-offset: 1px; border-color: transparent; }
+.waitlist button { flex: 0 0 auto; height: 52px; padding: 0 22px; border: 0; border-radius: 4px; background: var(--signal); color: var(--black); font: 700 15px var(--display); letter-spacing: .02em; cursor: pointer; }
+.waitlist button:disabled { opacity: .6; cursor: default; }
+.waitlist .msg { flex-basis: 100%; margin: 2px 0 0; min-height: 1.5em; font-size: 14px; color: var(--text-2); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Phone mockups (app screens, dark theme) */
+.phone { width: 300px; height: 620px; flex: none; border: 9px solid #2A2E31; border-radius: 44px; background: #000; position: relative; overflow: hidden; box-shadow: 0 40px 80px -40px rgba(46,170,242,.35); font-family: var(--display); }
+.phone::before { content: ""; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 92px; height: 26px; background: #2A2E31; border-radius: 16px; z-index: 3; }
+.phone .sbar { height: 42px; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 24px 4px; font: 600 12px var(--display); }
+.phone .scr { position: absolute; inset: 42px 0 0 0; padding: 8px 16px 20px; display: flex; flex-direction: column; gap: 14px; overflow: hidden; }
+.phone .scr::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 56px; background: linear-gradient(transparent, #000); pointer-events: none; }
+.p-eye { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: #6F777D; }
+.p-h { margin: 2px 0 0; font: 800 25px/1.05 var(--display); font-stretch: 92%; letter-spacing: -.01em; }
+.p-top { display: flex; justify-content: space-between; align-items: center; }
+.p-top img { width: 22px; height: 22px; }
+.p-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.p-stats b { display: block; font: 800 22px/1.05 var(--display); font-variant-numeric: tabular-nums; }
+.p-stats span { font-size: 10px; color: #6F777D; }
+.p-card { border: 1px solid #1E2326; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.p-card.fill { background: #111517; border-color: transparent; }
+.p-h2 { font: 700 12px var(--display); display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 0; }
+.p-sub { font-size: 11px; color: #A7AEB3; font-weight: 400; }
+.p-soon { font-family: var(--mono); font-size: 9px; letter-spacing: .04em; text-transform: uppercase; border: 1px dashed #6F777D; color: #A7AEB3; padding: 1px 5px; border-radius: 4px; white-space: nowrap; }
+.p-chip { font: 600 10px var(--display); padding: 3px 8px; border-radius: 999px; white-space: nowrap; background: #2C1513; color: var(--flag); justify-self: end; }
+.p-group { display: flex; flex-direction: column; }
+.p-glabel { display: flex; justify-content: space-between; font-size: 11px; color: #6F777D; padding: 0 2px 5px; border-bottom: 1px solid #1E2326; }
+.p-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 10px; padding: 9px 2px; border-bottom: 1px solid #1E2326; }
+.p-row .t { font: 600 14px var(--display); font-variant-numeric: tabular-nums; }
+.p-row .t small { display: block; font-weight: 400; color: #6F777D; font-size: 11px; }
+.p-metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 8px; }
+.p-metrics b { display: block; font: 800 19px/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.p-metrics span { font-size: 10px; color: #6F777D; }
+.p-call { background: #2C1513; border-radius: 10px; padding: 9px 11px; font-size: 12px; line-height: 1.35; }
+.p-call b { color: var(--flag); }
+.phone svg { display: block; width: 100%; height: auto; }
+.phone svg text { font-family: var(--mono); font-size: 9px; fill: #6F777D; }
+.p-rep { font: 800 13px var(--display); color: var(--signal); font-variant-numeric: tabular-nums; }
+
+/* Value row: three short lines, lots of air */
+.value-row { padding: clamp(88px, 11vw, 144px) 0; border-top: 1px solid var(--steel); }
+.value-row .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 1080px; }
+.value-row .wrap > div { font: 700 clamp(24px, 2.8vw, 34px)/1.15 var(--display); font-stretch: 90%; letter-spacing: -.01em; }
+.value-row .src { display: block; margin-top: 12px; font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.value-row i { display: block; margin-bottom: 14px; font-style: normal; font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; color: var(--signal); }
+
+/* Join + footer */
+.join { padding: 0 0 clamp(88px, 11vw, 144px); }
+.join .waitlist { margin: 0 auto; justify-content: center; }
+.join .waitlist .msg { text-align: center; }
+.join h2 { margin: 0 0 20px; font: 800 clamp(26px, 3.6vw, 40px)/1.05 var(--display); font-stretch: 88%; }
+.how-link { display: inline-block; margin-top: 28px; font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--signal); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+.foot { border-top: 1px solid var(--steel); padding: 26px 0 calc(26px + env(safe-area-inset-bottom, 0px)); }
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: space-between; }
+.foot b { font-weight: 600; color: var(--bone); }
+.foot a { color: var(--text-2); text-decoration: none; }
+.foot a:hover { color: var(--signal); }
+.foot .small { font-size: 11px; color: var(--muted); }
+.foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+@media (max-width: 820px) {
+  .value-row .wrap { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+}
+@media (max-width: 420px) {
+  .waitlist button { flex: 1 1 100%; }
+}
+
+/* two ways */
+.ways { padding: 0 0 clamp(88px, 11vw, 144px); }
+.ways h2 { margin: 0 0 32px; text-align: center; font: 800 clamp(26px, 3.6vw, 40px)/1.05 var(--display); font-stretch: 88%; }
+.ways-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1080px; margin: 0 auto; }
+.way { background: var(--graphite); border: 1px solid var(--steel); border-radius: 8px; padding: 28px; }
+.way .tag { font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--signal); }
+.way h3 { margin: 12px 0 10px; font: 800 clamp(24px, 2.6vw, 30px)/1.1 var(--display); font-stretch: 90%; }
+.way p { margin: 0 0 18px; color: var(--text-2); font-size: 17px; line-height: 1.5; }
+.way a { font: 600 15px var(--display); color: var(--bone); text-decoration: none; border-bottom: 1px solid var(--signal); padding-bottom: 2px; }
+.way a:hover { color: var(--signal); }
+@media (max-width: 820px) { .ways-grid { grid-template-columns: 1fr; } }
+
+/* top nav */
+#join { scroll-margin-top: 80px; }
+.snav { position: sticky; top: 0; z-index: 50; padding-top: env(safe-area-inset-top, 0px); background: rgba(11,12,14,.8); -webkit-backdrop-filter: saturate(140%) blur(14px); backdrop-filter: saturate(140%) blur(14px); border-bottom: 1px solid rgba(255,255,255,.07); }
+.snav .wrap { display: flex; align-items: center; gap: 20px; height: 64px; }
+.snav .lockup { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--bone); flex: none; }
+.snav .lockup img { width: 28px; height: 28px; }
+.snav .lockup span { font: 700 15px/1 var(--display); font-stretch: 112%; letter-spacing: .14em; }
+.snav .links { display: flex; gap: 2px; margin-left: auto; }
+.snav .links a { font: 500 15px/1 var(--display); color: var(--text-2); text-decoration: none; padding: 10px 12px; border-radius: 6px; white-space: nowrap; }
+.snav .links a:hover { color: var(--bone); background: rgba(255,255,255,.05); }
+.snav .links a[aria-current] { color: var(--bone); box-shadow: inset 0 -2px 0 var(--signal); border-radius: 0; }
+.snav .cta { flex: none; font: 600 14px/1 var(--display); color: var(--black); background: var(--signal); padding: 12px 16px; border-radius: 6px; text-decoration: none; white-space: nowrap; }
+.snav .cta:hover { filter: brightness(1.08); }
+.snav .cta .s { display: none; }
+.snav .burger { display: none; flex: none; width: 44px; height: 44px; margin-right: -10px; align-items: center; justify-content: center; background: none; border: 0; color: var(--bone); cursor: pointer; border-radius: 6px; }
+.snav .burger svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.snav .burger .i-close, .snav.open .burger .i-open { display: none; }
+.snav.open .burger .i-close { display: block; }
+.snav .sheet { display: none; }
+@media (max-width: 1080px) {
+  .snav .links { display: none; }
+  .snav .cta { margin-left: auto; }
+  .snav .burger { display: inline-flex; }
+  .snav.open { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--black); }
+  .snav.open .sheet { display: flex; flex-direction: column; position: fixed; left: 0; right: 0; bottom: 0; top: calc(64px + env(safe-area-inset-top, 0px)); overflow-y: auto; padding: 8px var(--gut) calc(24px + env(safe-area-inset-bottom, 0px)); background: var(--black); }
+  .snav .sheet a { font: 700 26px/1.1 var(--display); font-stretch: 92%; color: var(--bone); text-decoration: none; padding: 16px 0; border-bottom: 1px solid var(--steel); }
+  .snav .sheet a[aria-current] { color: var(--signal); }
+  .snav .sheet .sheet-cta { margin-top: 24px; border: 0; border-radius: 6px; background: var(--signal); color: var(--black); text-align: center; font: 600 17px/1 var(--display); padding: 18px; }
+  body.nav-open { overflow: hidden; }
+}
+@media (max-width: 480px) {
+  .snav .wrap { gap: 12px; }
+  .snav .cta { padding: 11px 14px; }
+  .snav .cta .l { display: none; }
+  .snav .cta .s { display: inline; }
+}
+</style>
+</head>
+<body>
+
+<!--snav-->
+<header class="snav">
+  <div class="wrap">
+    <a class="lockup" href="./" aria-label="Datum Strength home"><img src="media/mark.svg" alt=""><span>DATUM STRENGTH</span></a>
+    <nav class="links" aria-label="Main"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="research.html">Research</a><a href="kit.html">The kit</a></nav>
+    <a class="cta" href="#join"><span class="l">Join the waitlist</span><span class="s">Join</span></a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="snav-sheet" aria-label="Open menu"><svg class="i-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg><svg class="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <nav class="sheet" id="snav-sheet" aria-label="Menu"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a class="sheet-cta" href="#join">Join the waitlist</a></nav>
+</header>
+<!--/snav-->
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Every set logged. <span>Nothing typed.</span></h1>
+        <p class="lede">Know how long to grind and when to stop.</p>
+        <form class="waitlist" novalidate>
+          <label class="sr" for="wl-hero">Email</label>
+          <input id="wl-hero" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          <button type="submit">Join the waitlist</button>
+          <p class="msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="phone" role="img" aria-label="Datum app screen for a real bench set, 225 pounds for 3 reps. The bar path replays, the rep count goes up, and rep 3 is flagged as a grind: 1.40 seconds to lock out against 0.70 and 0.74 for reps 1 and 2.">
+        <div class="sbar"><span>9:41</span><span>5G</span></div>
+        <div class="scr" id="scr-set"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="value-row" aria-label="What you get">
+    <div class="wrap">
+      <div><i>01</i>Sets and reps, logged for you.</div>
+      <div><i>02</i>Bar speed, depth, grinds, best reps, estimated max and your history.</div>
+      <div><i>03</i>Reports that reference published strength research. <a class="src" href="how.html#sources">Sources</a></div>
+    </div>
+  </section>
+
+  <section class="ways" aria-labelledby="ways-h">
+    <div class="wrap">
+      <h2 id="ways-h">Two ways to use Datum</h2>
+      <div class="ways-grid">
+        <div class="way"><span class="tag">At your gym</span><h3>Just lift.</h3><p>Your gym or coach has Datum on the racks. You lift and open the app.</p><a href="gyms.html">For coaches and gyms</a></div>
+        <div class="way"><span class="tag">At home</span><h3>Add it to your rack.</h3><p>A reader goes on your rack and small tags go on your bar. The app does the rest.</p><a href="kit.html">See the kit</a></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="join" id="join">
+    <div class="wrap">
+      <form class="waitlist" novalidate>
+        <label class="sr" for="wl-foot">Email</label>
+        <input id="wl-foot" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        <button type="submit">Join the waitlist</button>
+        <p class="msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap mono">
+    <span class="foot-links"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="how.html">How it works</a></span>
+    <span class="small">© 2026 Datum Strength · by Alt Meridian</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Sign-ups go to the waitlist table in the datum-strength Supabase project.
+  // The publishable key is meant to be public: the table only lets it add an email, never read the list.
+  // If the endpoint is ever emptied, the form falls back to opening a pre-filled email.
+  var WAITLIST_ENDPOINT = "https://odhzmfboqsooumilciwu.supabase.co/rest/v1/waitlist?columns=email";
+  var WAITLIST_KEY = "sb_publishable_AYyGQ4h2uFr2F9JZRSZ5Xw_wEcS1YaF";
+  var WAITLIST_EMAIL = "josh@altmeridian.com";
+
+  Array.prototype.forEach.call(document.querySelectorAll("form.waitlist"), function (form) {
+    var input = form.querySelector("input");
+    var msg = form.querySelector(".msg");
+    var button = form.querySelector("button");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // The table only accepts lowercase addresses, so duplicates differing by case can't slip in.
+      var email = input.value.trim().toLowerCase();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msg.textContent = "Enter an email address like you@example.com.";
+        input.focus();
+        return;
+      }
+      if (!WAITLIST_ENDPOINT) {
+        window.location.href = "mailto:" + WAITLIST_EMAIL + "?subject=" + encodeURIComponent("Datum Strength waitlist") + "&body=" + encodeURIComponent("Add me to the Datum Strength waitlist: " + email);
+        msg.textContent = "Your email app should open with a message to us. Send it to join. If nothing opens, email " + WAITLIST_EMAIL + ".";
+        return;
+      }
+      button.disabled = true;
+      msg.textContent = "Sending.";
+      fetch(WAITLIST_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "apikey": WAITLIST_KEY, "Prefer": "return=minimal" },
+        body: JSON.stringify({ email: email })
+      }).then(function (r) {
+        // 409 means the address is already on the list. Treat it as success so the form doesn't reveal who has signed up.
+        if (!r.ok && r.status !== 409) throw new Error("waitlist sign-up failed with status " + r.status);
+        msg.textContent = "You're on the list. We'll email you with updates.";
+        form.reset();
+      }).catch(function () {
+        msg.textContent = "That didn't go through. Try again, or email " + WAITLIST_EMAIL + ".";
+      }).then(function () { button.disabled = false; });
+    });
+  });
+
+  // App screens, drawn from the real Nov 21 session.
+  // sets: n, lift, lb (from the lifter's notes), t start, rest before, p = seconds from bottom to lockout per rep, g = grind reps flagged by the pipeline.
+  // path: bench 225 x 3 (set 6) bar path every dt seconds, reps = [bottom, lockout] seconds.
+  var D = {"sets":[{"n":1,"lift":"squat","lb":135,"t":"13:22","rest":null,"p":[0.72,0.8,0.78,0.84,0.82],"g":[]},{"n":2,"lift":"squat","lb":225,"t":"13:26","rest":"3:58","p":[0.94,0.96,1.0],"g":[]},{"n":3,"lift":"squat","lb":225,"t":"13:33","rest":"7:14","p":[0.86,0.98,0.96],"g":[]},{"n":4,"lift":"squat","lb":245,"t":"13:42","rest":"9:07","p":[0.96,1.2,0.94],"g":[]},{"n":5,"lift":"bench","lb":135,"t":"13:47","rest":"4:39","p":[0.52,0.48,0.48,0.5,0.5,0.48],"g":[]},{"n":6,"lift":"bench","lb":225,"t":"13:49","rest":"1:54","p":[0.7,0.74,1.4],"g":[3]},{"n":7,"lift":"bench","lb":225,"t":"13:52","rest":"2:36","p":[0.82,0.88,1.04],"g":[]},{"n":8,"lift":"bench","lb":225,"t":"13:53","rest":"1:19","p":[0.96,0.94,1.08],"g":[]}],"path":{"dt":0.08,"z":[39.6,40.6,41.6,42.3,42.4,42.5,42.5,42.5,42.6,42.6,42.6,42.9,43.3,43.2,42.7,42.0,41.1,40.2,39.1,37.9,36.7,36.0,35.6,35.3,35.2,35.2,34.8,34.7,34.9,35.4,36.0,37.0,37.9,38.8,40.0,41.5,42.5,42.1,40.4,38.6,37.0,35.7,34.9,34.1,33.5,33.6,33.5,33.4,33.3,33.5,34.0,34.7,35.6,36.7,38.1,39.4,40.7,41.8,42.2,41.2,39.4,37.3,35.4,34.1,32.9,31.9,31.3,31.3,31.6,31.8,32.0,32.2,32.9,33.4,34.0,34.7,35.7,37.2,38.3,39.1,39.9,40.5,40.9,41.4,42.0,42.6,42.4,41.9,41.6,41.6,41.7,42.0,41.8,41.2,40.5,39.9,39.1],"reps":[[2.14,2.84],[3.82,4.56],[5.32,6.72]]}};
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var MARK = '<img src="media/mark.svg" alt="">';
+  function f2(v) { return v.toFixed(2); }
+  function bars(p, g, w, h, labels) {
+    // One bar per rep, height = time to lock out. Grind reps in red.
+    var max = 1.5, n = p.length, slot = w / n, bw = Math.min(labels ? 40 : 7, slot - (labels ? 10 : 2)), base = h - (labels ? 14 : 0), top = labels ? 14 : 0, s = "";
+    p.forEach(function (v, i) {
+      var x = i * slot + (slot - bw) / 2, bh = v / max * (base - top), y = base - bh, fl = g.indexOf(i + 1) >= 0;
+      s += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + bh.toFixed(1) + '" rx="2" fill="' + (fl ? "#FF6A5C" : "#F3F5F6") + '" opacity="' + (fl ? 1 : (labels ? 1 : .8)) + '"/>';
+      if (labels) {
+        s += '<text x="' + (x + bw / 2).toFixed(1) + '" y="' + (y - 4).toFixed(1) + '" text-anchor="middle" style="fill:' + (fl ? "#FF6A5C" : "#F3F5F6") + '">' + f2(v) + ' s</text>';
+        s += '<text x="' + (x + bw / 2).toFixed(1) + '" y="' + (h - 2) + '" text-anchor="middle">' + (i + 1) + '</text>';
+      }
+    });
+    return '<svg viewBox="0 0 ' + w + ' ' + h + '"' + (labels ? '' : ' style="width:' + w + 'px;height:' + h + 'px;flex:none"') + ' aria-hidden="true">' + s + '</svg>';
+  }
+  var sets = D.sets, g6 = sets[5];
+
+  // Set screen: bench 225 x 3 with the bar path replaying at real speed.
+  var P = D.path, W = 268, H = 120, z = P.z, T = (z.length - 1) * P.dt;
+  var lo = Math.min.apply(null, z), hi = Math.max.apply(null, z);
+  function X(t) { return 4 + t / T * (W - 8); }
+  function Y(v) { return 8 + (hi - v) / (hi - lo) * (H - 16); }
+  function at(t) { var f = t / P.dt, i = Math.max(0, Math.min(z.length - 2, Math.floor(f))), k = Math.min(1, f - i); return z[i] + (z[i + 1] - z[i]) * k; }
+  function seg(t0, t1) { var o = []; for (var t = t0; t < t1; t += P.dt / 2) o.push(X(t).toFixed(1) + " " + Y(at(t)).toFixed(1)); o.push(X(t1).toFixed(1) + " " + Y(at(t1)).toFixed(1)); return "M" + o.join("L"); }
+  document.getElementById("scr-set").innerHTML =
+    '<div class="p-top">' + MARK + '<span class="p-eye">Bench · 13:49</span></div>' +
+    '<div><div class="p-eye">Set 2 of 4</div><h3 class="p-h">225 lb × 3</h3></div>' +
+    '<div class="p-card"><div class="p-h2">Bar path<span class="p-rep" id="set-rep">Rep 0 of 3</span></div><svg viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true"><path id="set-path" d="" fill="none" stroke="#F3F5F6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity=".85"/><g id="set-press"></g><circle id="set-dot" r="4.5" fill="#2EAAF2" cx="-10" cy="-10"/></svg></div>' +
+    '<div class="p-card"><div class="p-h2">Time to lock out<span class="p-sub">per rep</span></div>' + bars(g6.p, g6.g, 236, 96, true) + '</div>' +
+    '<div class="p-call"><b>Rep 3 was a grind.</b> Twice as long as rep 1.</div>' +
+    '<div class="p-metrics"><div><b>' + g6.rest + '</b><span>rest before</span></div><div><b>3 of 3</b><span>reps counted</span></div><div><b>' + f2(Math.min.apply(null, g6.p)) + ' s</b><span>fastest rep</span></div><div><b>' + f2(Math.max.apply(null, g6.p)) + ' s</b><span>slowest rep</span></div></div>';
+  var pathEl = document.getElementById("set-path"), pressEl = document.getElementById("set-press"), dot = document.getElementById("set-dot"), repEl = document.getElementById("set-rep");
+  function draw(t) {
+    pathEl.setAttribute("d", t > 0 ? seg(0, t) : "");
+    var h = "", done = 0;
+    P.reps.forEach(function (r) {
+      if (t > r[0]) h += '<path d="' + seg(r[0], Math.min(t, r[1])) + '" fill="none" stroke="#2EAAF2" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>';
+      if (t >= r[1]) done++;
+    });
+    pressEl.innerHTML = h;
+    dot.setAttribute("cx", X(t).toFixed(1)); dot.setAttribute("cy", Y(at(t)).toFixed(1));
+    repEl.textContent = "Rep " + done + " of " + P.reps.length;
+  }
+  if (reduce) { draw(T); return; }
+  var start = null, HOLD = 2200;
+  function frame(now) {
+    if (start === null) start = now;
+    var el = (now - start) / 1000;
+    if (!document.hidden) draw(Math.min(el, T));
+    if (el * 1000 > T * 1000 + HOLD) start = now;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+<script id="snav-js">
+(function () {
+  var h = document.querySelector('.snav'); if (!h) return;
+  var b = h.querySelector('.burger');
+  function set(o) {
+    h.classList.toggle('open', o); b.setAttribute('aria-expanded', o ? 'true' : 'false');
+    b.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); document.body.classList.toggle('nav-open', o);
+  }
+  b.addEventListener('click', function () { set(!h.classList.contains('open')); });
+  h.querySelectorAll('.sheet a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+  var mq = window.matchMedia('(min-width: 1081px)');
+  if (mq.addEventListener) mq.addEventListener('change', function (e) { if (e.matches) set(false); });
+})();
+</script>
+</body>
+</html>
