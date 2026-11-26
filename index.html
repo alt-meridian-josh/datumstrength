@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Datum Strength</title>
-<meta name="description" content="Every set logged, nothing typed. Datum Strength counts your reps, times each one, tracks bar speed and depth, and flags grinds.">
+<meta name="description" content="Strength reporting and analytics for any log. Import from Hevy, Strong and more, or snap a photo of your notes, and get reports that show their math. Add rack tracking when you want it.">
 <meta property="og:title" content="Datum Strength">
-<meta property="og:description" content="Every set logged, nothing typed. Datum Strength counts your reps, times each one, tracks bar speed and depth, and flags grinds.">
+<meta property="og:description" content="Strength reporting and analytics for any log. Import from Hevy, Strong and more, or snap a photo of your notes, and get reports that show their math. Add rack tracking when you want it.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://datumstrength.com/">
 <link rel="canonical" href="https://datumstrength.com/">
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <style>
-/* Datum Strength main page: leads with the app and what the lifter gets. Science lives on how.html. */
+/* Datum Strength main page: any log in, real reports out; rack tracking is the upgrade. Science lives on research.html. */
 :root {
   color-scheme: dark;
   --black: #0B0C0E;
@@ -160,7 +160,7 @@ a { color: inherit; }
 .snav .burger .i-close, .snav.open .burger .i-open { display: none; }
 .snav.open .burger .i-close { display: block; }
 .snav .sheet { display: none; }
-@media (max-width: 1080px) {
+@media (max-width: 1160px) {
   .snav .links { display: none; }
   .snav .cta { margin-left: auto; }
   .snav .burger { display: inline-flex; }
@@ -177,6 +177,46 @@ a { color: inherit; }
   .snav .cta .l { display: none; }
   .snav .cta .s { display: inline; }
 }
+
+/* pivot: import phone, three ways, tracking band */
+.p-ok { font: 600 10px var(--display); padding: 3px 8px; border-radius: 999px; white-space: nowrap; background: rgba(46,170,242,.14); color: var(--signal); }
+.p-note { background: rgba(46,170,242,.10); border-radius: 10px; padding: 9px 11px; font-size: 12px; line-height: 1.35; color: #C3C6CB; }
+.p-note b { color: var(--signal); }
+.ways-grid.three { grid-template-columns: repeat(3, 1fr); }
+.way .links2 { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+.track { padding: 0 0 clamp(88px, 11vw, 144px); }
+.track .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(32px, 6vw, 88px); align-items: center; max-width: 1080px; }
+.track h2 { margin: 0 0 18px; font: 800 clamp(30px, 4.4vw, 52px)/1.02 var(--display); font-stretch: 86%; }
+.track h2 span { display: block; color: var(--signal); }
+.track p { margin: 0 0 22px; max-width: 42ch; color: var(--text-2); font-size: clamp(17px, 1.9vw, 20px); line-height: 1.5; }
+.track ul { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 10px; }
+.track li { padding-left: 18px; position: relative; color: var(--text-2); }
+.track li::before { content: ""; position: absolute; left: 0; top: .65em; width: 8px; height: 2px; background: var(--signal); }
+.track a.more { font: 600 15px var(--display); color: var(--bone); text-decoration: none; border-bottom: 1px solid var(--signal); padding-bottom: 2px; margin-right: 18px; }
+.join h2 { text-align: center; }
+@media (max-width: 1000px) { .ways-grid.three { grid-template-columns: 1fr; max-width: 640px; } }
+@media (max-width: 820px) { .track .wrap { grid-template-columns: 1fr; justify-items: center; text-align: left; } }
+
+/* marketing pass Nov 25: report band flipped, coach band */
+.track.flip .wrap { grid-template-columns: auto minmax(0, 1fr); }
+.track.flip .wrap > .phone { order: -1; }
+.coach { padding: 0 0 clamp(88px, 11vw, 144px); }
+.coach .wrap { max-width: 760px; text-align: center; }
+.coach .tag { font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--signal); }
+.coach h2 { margin: 12px 0 16px; font: 800 clamp(30px, 4.4vw, 52px)/1.02 var(--display); font-stretch: 86%; }
+.coach p { margin: 0 auto 24px; max-width: 52ch; color: var(--text-2); font-size: clamp(17px, 1.9vw, 20px); line-height: 1.5; }
+.coach a.more { font: 600 15px var(--display); color: var(--bone); text-decoration: none; border-bottom: 1px solid var(--signal); padding-bottom: 2px; }
+@media (max-width: 820px) { .track.flip .wrap { grid-template-columns: 1fr; } .track.flip .wrap > .phone { order: 0; } }
+.foot .marks { flex-basis: 100%; font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: .02em; }
+
+/* reporting pass: home */
+.hero-eye { display: block; margin-bottom: 18px; font: 500 13px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--signal); }
+.strip { padding: clamp(72px, 9vw, 120px) 0; border-top: 1px solid var(--steel); text-align: center; }
+.strip h2 { margin: 0 0 24px; font: 800 clamp(24px, 3.2vw, 36px)/1.1 var(--display); font-stretch: 88%; }
+.strip .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 0 auto 28px; padding: 0; list-style: none; max-width: 820px; }
+.strip .chips li { font: 500 14px var(--mono); padding: 9px 14px; border: 1px solid var(--steel); border-radius: 999px; color: var(--text-2); }
+.strip a.more { font: 600 15px var(--display); color: var(--bone); text-decoration: none; border-bottom: 1px solid var(--signal); padding-bottom: 2px; }
+.track.flip { padding-top: clamp(88px, 11vw, 144px); border-top: 1px solid var(--steel); }
 </style>
 </head>
 <body>
@@ -185,11 +225,11 @@ a { color: inherit; }
 <header class="snav">
   <div class="wrap">
     <a class="lockup" href="./" aria-label="Datum Strength home"><img src="media/mark.svg" alt=""><span>DATUM STRENGTH</span></a>
-    <nav class="links" aria-label="Main"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="blog.html">Blog</a></nav>
+    <nav class="links" aria-label="Main"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a></nav>
     <a class="cta" href="#join"><span class="l">Join the waitlist</span><span class="s">Join</span></a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="snav-sheet" aria-label="Open menu"><svg class="i-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg><svg class="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <nav class="sheet" id="snav-sheet" aria-label="Menu"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="blog.html">Blog</a><a class="sheet-cta" href="#join">Join the waitlist</a></nav>
+  <nav class="sheet" id="snav-sheet" aria-label="Menu"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a><a href="leaderboards.html">Leaderboards</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a class="sheet-cta" href="#join">Join the waitlist</a></nav>
 </header>
 <!--/snav-->
 
@@ -197,14 +237,112 @@ a { color: inherit; }
   <section class="hero">
     <div class="wrap">
       <div>
-        <h1>Every set logged. <span>Nothing typed.</span></h1>
-        <p class="lede">Know how long to grind and when to stop.</p>
+        <span class="hero-eye">Strength reporting and analytics</span>
+        <h1>Bring any log. <span>Get real reports.</span></h1>
+        <p class="lede">Import from Hevy, Strong and more, or snap a photo of your notebook. Every report shows its math and the study behind it. Add rack tracking when you want sets to log themselves.</p>
         <form class="waitlist" novalidate>
           <label class="sr" for="wl-hero">Email</label>
           <input id="wl-hero" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
           <button type="submit">Join the waitlist</button>
           <p class="msg" role="status" aria-live="polite"></p>
         </form>
+      </div>
+      <div class="phone" role="img" aria-label="Sample weekly report built from an imported Strong export: sessions, hard sets per lift, an estimated bench max trend over eight weeks and an effort drift note.">
+        <div class="sbar"><span>9:41</span><span>5G</span></div>
+        <div class="scr">
+          <div class="p-top"><span class="p-eye">Weekly report · sample</span><img src="media/mark.svg" alt=""></div>
+          <div><div class="p-eye">From a Strong export</div><h3 class="p-h">This week</h3></div>
+          <div class="p-stats"><div><b>4</b><span>Sessions</span></div><div><b>41</b><span>Hard sets</span></div><div><b>2</b><span>PRs</span></div><div><b>8 wk</b><span>Trend</span></div></div>
+          <div class="p-card fill">
+            <p class="p-h2">Bench, estimated max <span class="p-sub">Epley, load and reps</span></p>
+            <svg viewBox="0 0 240 70" aria-hidden="true"><polyline points="4,56 36,54 68,50 100,51 132,44 164,40 196,36 236,30" fill="none" stroke="#2EAAF2" stroke-width="2"/><text x="4" y="69">8 weeks ago</text><text x="200" y="69">Now</text></svg>
+          </div>
+          <div class="p-group">
+            <div class="p-glabel"><span>Hard sets</span><span>This week</span></div>
+            <div class="p-row"><span class="t">Squat</span><span class="t">14</span><span></span></div>
+            <div class="p-row"><span class="t">Bench</span><span class="t">15</span><span></span></div>
+            <div class="p-row"><span class="t">Deadlift</span><span class="t">6</span><span></span></div>
+          </div>
+          <div class="p-note"><b>Effort drift.</b> Same weight, logged harder than four weeks ago. Worth a lighter week.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="strip" aria-labelledby="strip-h">
+    <div class="wrap">
+      <h2 id="strip-h">Works with the log you already keep</h2>
+      <ul class="chips">
+        <li>Hevy export</li><li>Strong export</li><li>Perch export</li><li>Spreadsheet</li><li>Notebook photo</li><li>Pasted notes</li><li>Datum rack</li>
+      </ul>
+      <a class="more" href="import.html">How import works</a>
+    </div>
+  </section>
+
+  <section class="track flip" aria-labelledby="hist-h">
+    <div class="wrap">
+      <div>
+        <h2 id="hist-h">One log. <span>Every source.</span></h2>
+        <p>Years of training from different apps and notebooks, read as one history. Lift names are matched, duplicates merged, notes kept.</p>
+        <ul>
+          <li>"BB Bench" and "Bench Press (Barbell)" become one lift</li>
+          <li>Workouts in two sources count once</li>
+          <li>Your notes stay next to the sets they belong to</li>
+        </ul>
+        <a class="more" href="import.html">How import works</a>
+      </div>
+      <div class="phone" role="img" aria-label="Sample Datum history screen. Sessions from a Hevy export, a Strong export, notebook photos and a tracked rack are merged into one log, with an estimated bench max trend.">
+        <div class="sbar"><span>9:41</span><span>5G</span></div>
+        <div class="scr">
+          <div class="p-top"><span class="p-eye">Sample history</span><img src="media/mark.svg" alt=""></div>
+          <h3 class="p-h">One log.<br>Every source.</h3>
+          <div class="p-stats"><div><b>412</b><span>Sessions</span></div><div><b>6.1k</b><span>Sets</span></div><div><b>4</b><span>Sources</span></div><div><b>6 yr</b><span>History</span></div></div>
+          <div class="p-group">
+            <div class="p-glabel"><span>Sources</span><span>Sessions</span></div>
+            <div class="p-row"><span class="t">Hevy<small>Export file</small></span><span class="t">214</span><span class="p-ok">Merged</span></div>
+            <div class="p-row"><span class="t">Strong<small>Export file</small></span><span class="t">151</span><span class="p-ok">Merged</span></div>
+            <div class="p-row"><span class="t">Notebook<small>31 photos</small></span><span class="t">31</span><span class="p-ok">Checked</span></div>
+            <div class="p-row"><span class="t">Datum rack<small>Logged as you lift</small></span><span class="t">16</span><span class="p-ok">Tracked</span></div>
+          </div>
+          <div class="p-note"><b>One lift.</b> "BB Bench", "Bench Press (Barbell)" and "bench" from three sources, read as one.</div>
+          <div class="p-card fill">
+            <p class="p-h2">Bench, estimated max <span class="p-sub">6 years</span></p>
+            <svg viewBox="0 0 240 70" aria-hidden="true"><polyline points="4,60 30,57 56,52 82,54 108,44 134,40 160,36 186,30 212,24 236,18" fill="none" stroke="#2EAAF2" stroke-width="2"/><text x="4" y="69">2020</text><text x="206" y="69">2026</text></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="coach" aria-labelledby="math-h">
+    <div class="wrap">
+      <span class="tag">Reports</span>
+      <h2 id="math-h">Reports that show their math.</h2>
+      <p>Weekly volume and hard sets, estimated max trends, effort drift and records. Every report names its formula and links the study behind each threshold, so you can check it yourself.</p>
+      <a class="more" href="reports.html">See the reports</a>
+    </div>
+  </section>
+
+  <section class="coach" aria-labelledby="coach-h">
+    <div class="wrap">
+      <span class="tag">For coaches</span>
+      <h2 id="coach-h">Every client. One view.</h2>
+      <p>Your clients log in different apps, in spreadsheets or on paper. Datum reads every source into one report per client, with effort and notes next to each set. Clients on a tracked rack add bar speed on every rep.</p>
+      <a class="more" href="gyms.html">For coaches</a>
+    </div>
+  </section>
+
+  <section class="track" aria-labelledby="track-h">
+    <div class="wrap">
+      <div>
+        <h2 id="track-h">Add tracking <span>when you want it.</span></h2>
+        <p>Datum on the rack fills in your log while you lift. Same reports, more in them, nothing typed.</p>
+        <ul>
+          <li>Sets, reps and rest, logged</li>
+          <li>Each rep timed, grinds flagged</li>
+          <li>Bar speed and how much each set slowed</li>
+        </ul>
+        <a class="more" href="tracking.html">See tracking</a>
       </div>
       <div class="phone" role="img" aria-label="Datum app screen for a real bench set, 225 pounds for 3 reps. The bar path replays, the rep count goes up, and rep 3 is flagged as a grind: 1.40 seconds to lock out against 0.70 and 0.74 for reps 1 and 2.">
         <div class="sbar"><span>9:41</span><span>5G</span></div>
@@ -213,27 +351,9 @@ a { color: inherit; }
     </div>
   </section>
 
-  <section class="value-row" aria-label="What you get">
-    <div class="wrap">
-      <div><i>01</i>Sets and reps, logged for you.</div>
-      <div><i>02</i>Bar speed, depth, grinds, best reps, estimated max and your history.</div>
-      <div><i>03</i>Reports that reference published strength research. <a class="src" href="how.html#sources">Sources</a></div>
-    </div>
-  </section>
-
-  <section class="ways" aria-labelledby="ways-h">
-    <div class="wrap">
-      <h2 id="ways-h">Two ways to use Datum</h2>
-      <div class="ways-grid">
-        <div class="way"><span class="tag">At your gym</span><h3>Just lift.</h3><p>Your gym or coach has Datum on the racks. You lift and open the app.</p><a href="gyms.html">For coaches and gyms</a></div>
-        <div class="way"><span class="tag">At home</span><h3>Add it to your rack.</h3><p>A reader goes on your rack and small tags go on your bar. The app does the rest.</p><a href="kit.html">See the kit</a></div>
-      </div>
-    </div>
-  </section>
-
-
   <section class="join" id="join">
     <div class="wrap">
+      <h2>Bring your log. Join the waitlist.</h2>
       <form class="waitlist" novalidate>
         <label class="sr" for="wl-foot">Email</label>
         <input id="wl-foot" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
@@ -246,8 +366,9 @@ a { color: inherit; }
 
 <footer class="foot">
   <div class="wrap mono">
-    <span class="foot-links"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="how.html">How it works</a><a href="blog.html">Blog</a></span>
+    <span class="foot-links"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a><a href="leaderboards.html">Leaderboards</a><a href="faq.html">FAQ</a><a href="about.html">About</a></span>
     <span class="small">© 2026 Datum Strength · by Alt Meridian</span>
+    <span class="marks">Hevy, Strong and Perch are trademarks of their owners. Datum Strength is not affiliated with them.</span>
   </div>
 </footer>
 
@@ -366,7 +487,7 @@ a { color: inherit; }
   b.addEventListener('click', function () { set(!h.classList.contains('open')); });
   h.querySelectorAll('.sheet a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
-  var mq = window.matchMedia('(min-width: 1081px)');
+  var mq = window.matchMedia('(min-width: 1161px)');
   if (mq.addEventListener) mq.addEventListener('change', function (e) { if (e.matches) set(false); });
 })();
 </script>

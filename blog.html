@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <style>
-/* Datum Strength main page: leads with the app and what the lifter gets. Science lives on how.html. */
+/* Datum Strength main page: leads with the app and what the lifter gets. Science lives on research.html. */
 :root {
   color-scheme: dark;
   --black: #0B0C0E;
@@ -250,7 +250,7 @@ a { color: inherit; }
 .snav .burger .i-close, .snav.open .burger .i-open { display: none; }
 .snav.open .burger .i-close { display: block; }
 .snav .sheet { display: none; }
-@media (max-width: 1080px) {
+@media (max-width: 1160px) {
   .snav .links { display: none; }
   .snav .cta { margin-left: auto; }
   .snav .burger { display: inline-flex; }
@@ -303,6 +303,7 @@ a { color: inherit; }
 .pages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 16px 0 0; }
 .pages a { display: block; border: 1px solid var(--steel); border-radius: 6px; overflow: hidden; }
 @media (max-width: 640px) { .pages { grid-template-columns: 1fr; } }
+.foot .marks { flex-basis: 100%; font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: .02em; }
 </style>
 </head>
 <body>
@@ -311,11 +312,11 @@ a { color: inherit; }
 <header class="snav">
   <div class="wrap">
     <a class="lockup" href="./" aria-label="Datum Strength home"><img src="media/mark.svg" alt=""><span>DATUM STRENGTH</span></a>
-    <nav class="links" aria-label="Main"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="blog.html" aria-current="page">Blog</a></nav>
+    <nav class="links" aria-label="Main"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html" aria-current="page">Blog</a></nav>
     <a class="cta" href="#join"><span class="l">Join the waitlist</span><span class="s">Join</span></a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="snav-sheet" aria-label="Open menu"><svg class="i-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg><svg class="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <nav class="sheet" id="snav-sheet" aria-label="Menu"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="blog.html" aria-current="page">Blog</a><a class="sheet-cta" href="#join">Join the waitlist</a></nav>
+  <nav class="sheet" id="snav-sheet" aria-label="Menu"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html" aria-current="page">Blog</a><a href="leaderboards.html">Leaderboards</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a class="sheet-cta" href="#join">Join the waitlist</a></nav>
 </header>
 <!--/snav-->
 
@@ -355,8 +356,9 @@ a { color: inherit; }
 
 <footer class="foot">
   <div class="wrap mono">
-    <span class="foot-links"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="how.html">How it works</a><a href="blog.html">Blog</a></span>
+    <span class="foot-links"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a><a href="leaderboards.html">Leaderboards</a><a href="faq.html">FAQ</a><a href="about.html">About</a></span>
     <span class="small">© 2026 Datum Strength · by Alt Meridian</span>
+    <span class="marks">Hevy, Strong and Perch are trademarks of their owners. Datum Strength is not affiliated with them.</span>
   </div>
 </footer>
 
@@ -417,7 +419,7 @@ a { color: inherit; }
   b.addEventListener('click', function () { set(!h.classList.contains('open')); });
   h.querySelectorAll('.sheet a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
-  var mq = window.matchMedia('(min-width: 1081px)');
+  var mq = window.matchMedia('(min-width: 1161px)');
   if (mq.addEventListener) mq.addEventListener('change', function (e) { if (e.matches) set(false); });
 })();
 </script>

@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>About · Datum Strength</title>
-<meta name="description" content="Why Datum Strength exists: the log should write itself.">
+<meta name="description" content="Datum Strength turns the training log you already keep into reports that show their math. Rack tracking fills the log in for you.">
 <meta property="og:title" content="About · Datum Strength">
-<meta property="og:description" content="Why Datum Strength exists: the log should write itself.">
+<meta property="og:description" content="Datum Strength turns the training log you already keep into reports that show their math. Rack tracking fills the log in for you.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://datumstrength.com/about.html">
 <link rel="canonical" href="https://datumstrength.com/about.html">
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <style>
-/* Datum Strength main page: leads with the app and what the lifter gets. Science lives on how.html. */
+/* Datum Strength main page: leads with the app and what the lifter gets. Science lives on research.html. */
 :root {
   color-scheme: dark;
   --black: #0B0C0E;
@@ -250,7 +250,7 @@ a { color: inherit; }
 .snav .burger .i-close, .snav.open .burger .i-open { display: none; }
 .snav.open .burger .i-close { display: block; }
 .snav .sheet { display: none; }
-@media (max-width: 1080px) {
+@media (max-width: 1160px) {
   .snav .links { display: none; }
   .snav .cta { margin-left: auto; }
   .snav .burger { display: inline-flex; }
@@ -267,6 +267,7 @@ a { color: inherit; }
   .snav .cta .l { display: none; }
   .snav .cta .s { display: inline; }
 }
+.foot .marks { flex-basis: 100%; font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: .02em; }
 </style>
 </head>
 <body>
@@ -275,11 +276,11 @@ a { color: inherit; }
 <header class="snav">
   <div class="wrap">
     <a class="lockup" href="./" aria-label="Datum Strength home"><img src="media/mark.svg" alt=""><span>DATUM STRENGTH</span></a>
-    <nav class="links" aria-label="Main"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="blog.html">Blog</a></nav>
+    <nav class="links" aria-label="Main"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a></nav>
     <a class="cta" href="#join"><span class="l">Join the waitlist</span><span class="s">Join</span></a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="snav-sheet" aria-label="Open menu"><svg class="i-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg><svg class="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <nav class="sheet" id="snav-sheet" aria-label="Menu"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html">FAQ</a><a href="about.html" aria-current="page">About</a><a href="blog.html">Blog</a><a class="sheet-cta" href="#join">Join the waitlist</a></nav>
+  <nav class="sheet" id="snav-sheet" aria-label="Menu"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a><a href="leaderboards.html">Leaderboards</a><a href="faq.html">FAQ</a><a href="about.html" aria-current="page">About</a><a class="sheet-cta" href="#join">Join the waitlist</a></nav>
 </header>
 <!--/snav-->
 
@@ -287,15 +288,16 @@ a { color: inherit; }
   <section class="ph">
     <div class="wrap">
       <span class="eyebrow">About</span>
-      <h1>The log should <span>write itself.</span></h1>
+      <h1>Most lifters keep a log. <span>Few get much back.</span></h1>
     </div>
   </section>
 
   <section class="sec">
     <div class="wrap grid2">
       <div class="prose">
-        <p>Logging a workout means stopping between sets to type numbers into a phone. Many people stop doing it, and the record they would learn from never gets made.</p>
-        <p>Datum Strength reads the bar instead. You lift, and your sets, reps, rest, bar speed and depth are logged for you.</p>
+        <p>People write their training down for years, in apps, spreadsheets and notebooks. Most of that record never gets read.</p>
+        <p>Datum Strength reads it. Bring your log from wherever it lives, add how each set felt, and get reports that show their math and the research behind it.</p>
+        <p>For lifters who want the log filled in for them, Datum on the rack logs sets, reps, rest and bar speed as you lift.</p>
       </div>
       <figure class="figure"><video src="media/reel.mp4" poster="media/reel.jpg" muted loop playsinline controls preload="none"></video></figure>
     </div>
@@ -316,8 +318,9 @@ a { color: inherit; }
 
 <footer class="foot">
   <div class="wrap mono">
-    <span class="foot-links"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="how.html">How it works</a><a href="blog.html">Blog</a></span>
+    <span class="foot-links"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a><a href="leaderboards.html">Leaderboards</a><a href="faq.html">FAQ</a><a href="about.html">About</a></span>
     <span class="small">© 2026 Datum Strength · by Alt Meridian</span>
+    <span class="marks">Hevy, Strong and Perch are trademarks of their owners. Datum Strength is not affiliated with them.</span>
   </div>
 </footer>
 
@@ -378,7 +381,7 @@ a { color: inherit; }
   b.addEventListener('click', function () { set(!h.classList.contains('open')); });
   h.querySelectorAll('.sheet a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
-  var mq = window.matchMedia('(min-width: 1081px)');
+  var mq = window.matchMedia('(min-width: 1161px)');
   if (mq.addEventListener) mq.addEventListener('change', function (e) { if (e.matches) set(false); });
 })();
 </script>

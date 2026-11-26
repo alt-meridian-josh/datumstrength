@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Reports · Datum Strength</title>
-<meta name="description" content="Each session becomes a report: how each set slowed down, where reps got hard and your best reps, read against published strength research.">
+<meta name="description" content="Reports from any strength log: weekly volume and hard sets, estimated max trends, effort drift and records, each with its formula and research. Tracking adds bar speed and slowdown.">
 <meta property="og:title" content="Reports · Datum Strength">
-<meta property="og:description" content="Each session becomes a report: how each set slowed down, where reps got hard and your best reps, read against published strength research.">
+<meta property="og:description" content="Reports from any strength log: weekly volume and hard sets, estimated max trends, effort drift and records, each with its formula and research. Tracking adds bar speed and slowdown.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://datumstrength.com/reports.html">
 <link rel="canonical" href="https://datumstrength.com/reports.html">
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <style>
-/* Datum Strength main page: leads with the app and what the lifter gets. Science lives on how.html. */
+/* Datum Strength main page: leads with the app and what the lifter gets. Science lives on research.html. */
 :root {
   color-scheme: dark;
   --black: #0B0C0E;
@@ -250,7 +250,7 @@ a { color: inherit; }
 .snav .burger .i-close, .snav.open .burger .i-open { display: none; }
 .snav.open .burger .i-close { display: block; }
 .snav .sheet { display: none; }
-@media (max-width: 1080px) {
+@media (max-width: 1160px) {
   .snav .links { display: none; }
   .snav .cta { margin-left: auto; }
   .snav .burger { display: inline-flex; }
@@ -267,6 +267,23 @@ a { color: inherit; }
   .snav .cta .l { display: none; }
   .snav .cta .s { display: inline; }
 }
+.foot .marks { flex-basis: 100%; font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: .02em; }
+
+/* reporting pass: shared */
+.p-ok { font: 600 10px var(--display); padding: 3px 8px; border-radius: 999px; white-space: nowrap; background: rgba(46,170,242,.14); color: var(--signal); }
+.p-note { background: rgba(46,170,242,.10); border-radius: 10px; padding: 9px 11px; font-size: 12px; line-height: 1.35; color: #C3C6CB; }
+.p-note b { color: var(--signal); }
+.split { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.split .copy { min-width: 0; }
+.split .copy p { margin: 0 0 18px; max-width: 48ch; color: var(--text-2); font-size: clamp(17px, 1.9vw, 20px); line-height: 1.5; }
+.sample { display: inline-block; margin-bottom: 14px; font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border: 1px dashed var(--rule); border-radius: 4px; padding: 3px 7px; }
+.tbl { overflow-x: auto; }
+.tbl table { width: 100%; min-width: 560px; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.tbl th { text-align: left; font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 0 12px 12px 0; border-bottom: 1px solid var(--rule); }
+.tbl td { padding: 14px 12px 14px 0; border-bottom: 1px solid var(--steel); color: var(--text-2); vertical-align: top; }
+.tbl td:first-child { color: var(--bone); font-weight: 600; }
+.tbl .src { font: 500 12px var(--mono); color: var(--signal); }
+@media (max-width: 820px) { .split { grid-template-columns: 1fr; justify-items: center; } }
 </style>
 </head>
 <body>
@@ -275,11 +292,11 @@ a { color: inherit; }
 <header class="snav">
   <div class="wrap">
     <a class="lockup" href="./" aria-label="Datum Strength home"><img src="media/mark.svg" alt=""><span>DATUM STRENGTH</span></a>
-    <nav class="links" aria-label="Main"><a href="app.html">App</a><a href="reports.html" aria-current="page">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="blog.html">Blog</a></nav>
+    <nav class="links" aria-label="Main"><a href="reports.html" aria-current="page">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a></nav>
     <a class="cta" href="#join"><span class="l">Join the waitlist</span><span class="s">Join</span></a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="snav-sheet" aria-label="Open menu"><svg class="i-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg><svg class="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <nav class="sheet" id="snav-sheet" aria-label="Menu"><a href="app.html">App</a><a href="reports.html" aria-current="page">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="blog.html">Blog</a><a class="sheet-cta" href="#join">Join the waitlist</a></nav>
+  <nav class="sheet" id="snav-sheet" aria-label="Menu"><a href="reports.html" aria-current="page">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a><a href="leaderboards.html">Leaderboards</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a class="sheet-cta" href="#join">Join the waitlist</a></nav>
 </header>
 <!--/snav-->
 
@@ -287,13 +304,104 @@ a { color: inherit; }
   <section class="ph">
     <div class="wrap">
       <span class="eyebrow">Reports</span>
-      <h1>Your reps, <span>read against the research.</span></h1>
-      <p class="lede">Each session turns into a report: how each set slowed down, where your reps got hard, your best reps, and what published strength research says about it.</p>
+      <h1>Reports from <span>any log.</span></h1>
+      <p class="lede">Import your training, photograph your notebook or lift on a Datum rack. Every report names its formula and links the study behind each threshold.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap split">
+      <div class="phone" role="img" aria-label="Sample weekly report built from an imported Strong export: sessions, hard sets per lift, an estimated bench max trend over eight weeks and an effort drift note.">
+        <div class="sbar"><span>9:41</span><span>5G</span></div>
+        <div class="scr">
+          <div class="p-top"><span class="p-eye">Weekly report · sample</span><img src="media/mark.svg" alt=""></div>
+          <div><div class="p-eye">From a Strong export</div><h3 class="p-h">This week</h3></div>
+          <div class="p-stats"><div><b>4</b><span>Sessions</span></div><div><b>41</b><span>Hard sets</span></div><div><b>2</b><span>PRs</span></div><div><b>8 wk</b><span>Trend</span></div></div>
+          <div class="p-card fill">
+            <p class="p-h2">Bench, estimated max <span class="p-sub">Epley, load and reps</span></p>
+            <svg viewBox="0 0 240 70" aria-hidden="true"><polyline points="4,56 36,54 68,50 100,51 132,44 164,40 196,36 236,30" fill="none" stroke="#2EAAF2" stroke-width="2"/><text x="4" y="69">8 weeks ago</text><text x="200" y="69">Now</text></svg>
+          </div>
+          <div class="p-group">
+            <div class="p-glabel"><span>Hard sets</span><span>This week</span></div>
+            <div class="p-row"><span class="t">Squat</span><span class="t">14</span><span></span></div>
+            <div class="p-row"><span class="t">Bench</span><span class="t">15</span><span></span></div>
+            <div class="p-row"><span class="t">Deadlift</span><span class="t">6</span><span></span></div>
+          </div>
+          <div class="p-note"><b>Effort drift.</b> Same weight, logged harder than four weeks ago. Worth a lighter week.</div>
+        </div>
+      </div>
+      <div class="copy">
+        <span class="sample">Sample</span>
+        <h2>Your week, read</h2>
+        <p>Sessions, hard sets per lift, new records and how your estimated max moved. Built from a Strong export, with nothing else added.</p>
+        <p>When the same weight starts feeling harder, the report says so, and says what the research suggests doing about it.</p>
+      </div>
     </div>
   </section>
 
   <section class="sec">
     <div class="wrap">
+      <span class="sample">Sample</span>
+      <h2>Lift trend</h2>
+      <p class="sub">Estimated max on bench over 26 weeks, from the best set of 10 reps or fewer each week. Epley: load × (1 + reps ÷ 30).</p>
+      <div class="rep">
+        <div class="rep-head"><h3>Bench, estimated max (lb)</h3><span>236 to 262 lb</span></div>
+        <svg viewBox="0 0 720 260" role="img"><line x1="48" x2="700" y1="224.0" y2="224.0" stroke="#2A2D32" stroke-width="1"/><text x="40" y="228.0" text-anchor="end">230</text><line x1="48" x2="700" y1="172.0" y2="172.0" stroke="#2A2D32" stroke-width="1"/><text x="40" y="176.0" text-anchor="end">240</text><line x1="48" x2="700" y1="120.0" y2="120.0" stroke="#2A2D32" stroke-width="1"/><text x="40" y="124.0" text-anchor="end">250</text><line x1="48" x2="700" y1="68.0" y2="68.0" stroke="#2A2D32" stroke-width="1"/><text x="40" y="72.0" text-anchor="end">260</text><line x1="48" x2="700" y1="16.0" y2="16.0" stroke="#2A2D32" stroke-width="1"/><text x="40" y="20.0" text-anchor="end">270</text><text x="48.0" y="250" text-anchor="middle">26 wk ago</text><text x="374.0" y="250" text-anchor="middle">13 wk ago</text><text x="700.0" y="250" text-anchor="middle">This week</text><polyline points="48.0,192.8 98.2,182.4 148.3,166.8 198.5,172.0 248.6,151.2 298.8,135.6 348.9,140.8 399.1,120.0 449.2,109.6 499.4,114.8 549.5,94.0 599.7,78.4 649.8,73.2 700.0,57.6" fill="none" stroke="#2EAAF2" stroke-width="2.5" stroke-linejoin="round"/><circle cx="700.0" cy="57.6" r="4.5" fill="#2EAAF2"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <span class="sample">Sample</span>
+      <h2>Effort drift</h2>
+      <p class="sub">Reps in reserve logged on bench at 225 × 5, week by week. Same weight, same reps, less left in the tank.</p>
+      <div class="rep">
+        <div class="rep-head"><h3>Bench 225 × 5, reps in reserve</h3><span>3 down to 1</span></div>
+        <svg viewBox="0 0 720 260" role="img"><line x1="48" x2="700" y1="224.0" y2="224.0" stroke="#2A2D32" stroke-width="1"/><text x="40" y="228.0" text-anchor="end">0 RIR</text><line x1="48" x2="700" y1="172.0" y2="172.0" stroke="#2A2D32" stroke-width="1"/><text x="40" y="176.0" text-anchor="end">1</text><line x1="48" x2="700" y1="120.0" y2="120.0" stroke="#2A2D32" stroke-width="1"/><text x="40" y="124.0" text-anchor="end">2</text><line x1="48" x2="700" y1="68.0" y2="68.0" stroke="#2A2D32" stroke-width="1"/><text x="40" y="72.0" text-anchor="end">3</text><line x1="48" x2="700" y1="16.0" y2="16.0" stroke="#2A2D32" stroke-width="1"/><text x="40" y="20.0" text-anchor="end">4</text><text x="48.0" y="250" text-anchor="middle">Week 1</text><text x="327.4" y="250" text-anchor="middle">Week 4</text><text x="700.0" y="250" text-anchor="middle">Week 8</text><polyline points="48.0,68.0 141.1,68.0 234.3,68.0 327.4,94.0 420.6,94.0 513.7,120.0 606.9,146.0 700.0,172.0" fill="none" stroke="#FF6A5C" stroke-width="2.5" stroke-linejoin="round"/><circle cx="700.0" cy="172.0" r="4.5" fill="#FF6A5C"/></svg>
+        <ul class="calls">
+          <li class="flag"><b>Week 8: 1 rep in reserve, down from 3 in week 1.</b> Lifters tend to misjudge reps in reserve when they are far from failure, so the trend over weeks says more than any one rating.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <span class="sample">Sample</span>
+      <h2>Records, across every source</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Lift</th><th>Best</th><th>When</th><th>From</th></tr></thead>
+        <tbody>
+          <tr><td>Bench, 1 rep</td><td>245 lb</td><td>Mar 2026</td><td class="src">Strong export</td></tr>
+          <tr><td>Bench, 5 reps</td><td>215 lb</td><td>Aug 2025</td><td class="src">Hevy export</td></tr>
+          <tr><td>Squat, 3 reps</td><td>245 lb</td><td>Nov 2026</td><td class="src">Datum rack</td></tr>
+          <tr><td>Deadlift, 5 reps</td><td>275 lb</td><td>Jun 2024</td><td class="src">Notebook photo</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2>How we calculate</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Measure</th><th>How</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Estimated max</td><td>Epley, from the best set of 10 reps or fewer</td><td>Epley (1985)</td></tr>
+          <tr><td>Hard sets</td><td>Sets you rated at 4 or fewer reps in reserve</td><td>Datum definition</td></tr>
+          <tr><td>Effort drift</td><td>Reps in reserve at the same load and reps, week over week</td><td>Datum definition</td></tr>
+          <tr><td>Slowdown</td><td>Slowest rep against the first, tracked sets only</td><td>Pareja-Blanco et al. (2017)</td></tr>
+        </tbody>
+      </table></div>
+      <p class="sub" style="margin-top:20px">Full references are on the <a href="research.html">research page</a>.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2>With tracking: how each set slowed</h2>
+      <p class="sub">A real session logged on a Datum rack. Tracking adds bar speed and slowdown to the same report.</p>
       <div class="rep">
         <div class="rep-head"><h3>Session report</h3><span>Squat + bench · 8 sets</span></div>
         <p class="sub" style="margin:0 0 18px">Slowdown in each set: how much slower the slowest rep was than the first.</p>
@@ -351,7 +459,7 @@ a { color: inherit; }
 
   <section class="sec">
     <div class="wrap">
-      <h2>Best reps</h2>
+      <h2>Best tracked reps</h2>
       <div class="best">
         <div><b>0.70 s</b><span>Fastest bench rep at 225</span></div>
         <div><b>0.94 s</b><span>Fastest squat rep at 245</span></div>
@@ -360,23 +468,9 @@ a { color: inherit; }
     </div>
   </section>
 
-  <section class="sec">
-    <div class="wrap">
-      <h2>What a report covers</h2>
-      <ul class="status">
-        <li>Slowdown per set</li>
-        <li>Bar speed and depth per rep</li>
-        <li>Grinds, flagged</li>
-        <li>Best reps and estimated max</li>
-        <li>Your history, session over session</li>
-        <li>Read against published research</li>
-      </ul>
-    </div>
-  </section>
-
   <section class="cta" id="join">
     <div class="wrap">
-      <h2>Join the waitlist.</h2>
+      <h2>Bring your log. Join the waitlist.</h2>
       <form class="waitlist" novalidate>
         <label class="sr" for="wl-cta">Email</label>
         <input id="wl-cta" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
@@ -389,8 +483,9 @@ a { color: inherit; }
 
 <footer class="foot">
   <div class="wrap mono">
-    <span class="foot-links"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="how.html">How it works</a><a href="blog.html">Blog</a></span>
+    <span class="foot-links"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a><a href="leaderboards.html">Leaderboards</a><a href="faq.html">FAQ</a><a href="about.html">About</a></span>
     <span class="small">© 2026 Datum Strength · by Alt Meridian</span>
+    <span class="marks">Hevy, Strong and Perch are trademarks of their owners. Datum Strength is not affiliated with them.</span>
   </div>
 </footer>
 
@@ -451,7 +546,7 @@ a { color: inherit; }
   b.addEventListener('click', function () { set(!h.classList.contains('open')); });
   h.querySelectorAll('.sheet a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
-  var mq = window.matchMedia('(min-width: 1081px)');
+  var mq = window.matchMedia('(min-width: 1161px)');
   if (mq.addEventListener) mq.addEventListener('change', function (e) { if (e.matches) set(false); });
 })();
 </script>

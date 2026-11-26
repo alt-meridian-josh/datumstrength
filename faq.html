@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>FAQ · Datum Strength</title>
-<meta name="description" content="Straight answers about Datum Strength: what it tracks, what it works with and how to get one.">
+<meta name="description" content="Straight answers about Datum Strength: importing your log, what it tracks and how to get it.">
 <meta property="og:title" content="FAQ · Datum Strength">
-<meta property="og:description" content="Straight answers about Datum Strength: what it tracks, what it works with and how to get one.">
+<meta property="og:description" content="Straight answers about Datum Strength: importing your log, what it tracks and how to get it.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://datumstrength.com/faq.html">
 <link rel="canonical" href="https://datumstrength.com/faq.html">
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <style>
-/* Datum Strength main page: leads with the app and what the lifter gets. Science lives on how.html. */
+/* Datum Strength main page: leads with the app and what the lifter gets. Science lives on research.html. */
 :root {
   color-scheme: dark;
   --black: #0B0C0E;
@@ -250,7 +250,7 @@ a { color: inherit; }
 .snav .burger .i-close, .snav.open .burger .i-open { display: none; }
 .snav.open .burger .i-close { display: block; }
 .snav .sheet { display: none; }
-@media (max-width: 1080px) {
+@media (max-width: 1160px) {
   .snav .links { display: none; }
   .snav .cta { margin-left: auto; }
   .snav .burger { display: inline-flex; }
@@ -267,6 +267,7 @@ a { color: inherit; }
   .snav .cta .l { display: none; }
   .snav .cta .s { display: inline; }
 }
+.foot .marks { flex-basis: 100%; font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: .02em; }
 </style>
 </head>
 <body>
@@ -275,11 +276,11 @@ a { color: inherit; }
 <header class="snav">
   <div class="wrap">
     <a class="lockup" href="./" aria-label="Datum Strength home"><img src="media/mark.svg" alt=""><span>DATUM STRENGTH</span></a>
-    <nav class="links" aria-label="Main"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="blog.html">Blog</a></nav>
+    <nav class="links" aria-label="Main"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a></nav>
     <a class="cta" href="#join"><span class="l">Join the waitlist</span><span class="s">Join</span></a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="snav-sheet" aria-label="Open menu"><svg class="i-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg><svg class="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <nav class="sheet" id="snav-sheet" aria-label="Menu"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="how.html">How it works</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html" aria-current="page">FAQ</a><a href="about.html">About</a><a href="blog.html">Blog</a><a class="sheet-cta" href="#join">Join the waitlist</a></nav>
+  <nav class="sheet" id="snav-sheet" aria-label="Menu"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a><a href="leaderboards.html">Leaderboards</a><a href="faq.html" aria-current="page">FAQ</a><a href="about.html">About</a><a class="sheet-cta" href="#join">Join the waitlist</a></nav>
 </header>
 <!--/snav-->
 
@@ -294,11 +295,14 @@ a { color: inherit; }
   <section class="sec">
     <div class="wrap">
       <div class="qa">
-        <details><summary>Does it use cameras?</summary><p>No. It reads small tags on your equipment. Nothing in your gym is filmed.</p></details>
-        <details><summary>What does it track?</summary><p>Sets, reps, rest between sets, bar speed, depth, time to lockout and grinds.</p></details>
+        <details><summary>Can I use my existing log?</summary><p>Yes. Import an export from Hevy, Strong or Perch, upload a spreadsheet, or take a photo of a notebook page. <a href="import.html">How import works</a></p></details>
+        <details><summary>Which file do I export?</summary><p>In Hevy, export your workouts from Profile, Settings, Export &amp; Import Data. In Strong, export your data as a CSV file from the app. In Perch, use Export in the Perch web app. Spreadsheets upload as CSV or Excel.</p></details>
+        <details><summary>Do I need any hardware?</summary><p>No. Import your log and add effort to get reports. Rack tracking is there when you want sets to log themselves.</p></details>
+        <details><summary>Does it use cameras?</summary><p>No. Rack tracking reads small tags on your equipment. Nothing in your gym is filmed. The only photos are the ones you take of your own notes.</p></details>
+        <details><summary>What does it track?</summary><p>From any log: sets, reps, load, effort and notes. With Datum on the rack it also logs rest between sets, bar speed, depth, time to lockout and grinds.</p></details>
         <details><summary>Will it work with my equipment?</summary><p>It is designed around the racks and barbells people already use.</p></details>
-        <details><summary>Do I need to buy anything?</summary><p>Not if your gym or coach has Datum on the racks. You just lift and open the app. For a home rack, you add Datum to your own rack.</p></details>
-        <details><summary>How do I get it?</summary><p>Two ways. At a gym or with a coach that has Datum, open the app and lift. For your own rack, join the waitlist and you will hear first.</p></details>
+        <details><summary>Do I need to buy anything?</summary><p>No, to import your log and get reports. For tracking, nothing if your gym or coach has Datum on the racks. For a home rack, you add Datum to your own rack.</p></details>
+        <details><summary>How do I get it?</summary><p>Join the waitlist to bring your log. At a gym or with a coach that has Datum, open the app and lift. For your own rack, the waitlist hears first.</p></details>
       </div>
     </div>
   </section>
@@ -318,8 +322,9 @@ a { color: inherit; }
 
 <footer class="foot">
   <div class="wrap mono">
-    <span class="foot-links"><a href="app.html">App</a><a href="reports.html">Reports</a><a href="gyms.html">For gyms</a><a href="leaderboards.html">Leaderboards</a><a href="research.html">Research</a><a href="kit.html">The kit</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a href="how.html">How it works</a><a href="blog.html">Blog</a></span>
+    <span class="foot-links"><a href="reports.html">Reports</a><a href="import.html">Import</a><a href="gyms.html">Coaches</a><a href="tracking.html">Tracking</a><a href="research.html">Research</a><a href="blog.html">Blog</a><a href="leaderboards.html">Leaderboards</a><a href="faq.html">FAQ</a><a href="about.html">About</a></span>
     <span class="small">© 2026 Datum Strength · by Alt Meridian</span>
+    <span class="marks">Hevy, Strong and Perch are trademarks of their owners. Datum Strength is not affiliated with them.</span>
   </div>
 </footer>
 
@@ -380,7 +385,7 @@ a { color: inherit; }
   b.addEventListener('click', function () { set(!h.classList.contains('open')); });
   h.querySelectorAll('.sheet a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
-  var mq = window.matchMedia('(min-width: 1081px)');
+  var mq = window.matchMedia('(min-width: 1161px)');
   if (mq.addEventListener) mq.addEventListener('change', function (e) { if (e.matches) set(false); });
 })();
 </script>
